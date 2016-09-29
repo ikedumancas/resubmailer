@@ -13,19 +13,24 @@ def get_env_or_die(name):
 
 
 def generate_email_content(fname):
+    greetings = ""
+    if fname:
+        greetings = "Hi %s!" % (fname)
+    else:
+        greetings = "Hi!"
     text_email = """\
-    Hi %s!
+    %s
     This is a test email text version.
-    """ % (fname)
+    """ % (greetings)
     html_email = """\
     <html>
       <head></head>
       <body>
-        <p>Hi %s!</p>
+        <p>%s</p>
         <p>This is a test emai HTML version.</p>
       </body>
     </html>
-    """ % (fname)
+    """ % (greetings)
     return html_email, text_email
 
 
